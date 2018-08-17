@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>七夕心形</title>
+    <style>
+    /* flower.png请自行补充
+    */
+    .heart {
+        position: absolute;
+        margin-left: -25px;
+        width: 16px;
+        height: 16px;
+        background: url("./flower.png");
+        background-size: 16px 16px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="heart"></div>
+    <script>
+    for (let i = 0; i < 50; i++) {
+        var step = i / 50 * (Math.PI * 2); //把整个圆分成50份
+        var vector = {
+            x: 100 + 4 * (16 * Math.pow(Math.sin(step), 3)),
+            y: 50 - 4 * (13 * Math.cos(step) - 5 * Math.cos(2 * step) - 2 * Math.cos(3 * step) - Math.cos(4 *
+                step))
+        }
+        var div = ' <div class="heart" style="transform: matrix(1,0,0,1,' + vector.x + ', ' + vector.y + ');"></div>';
+        $('body').append(div);
+    }
+    </script>
+</body>
+
+</html>
